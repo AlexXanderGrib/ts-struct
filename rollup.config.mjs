@@ -1,18 +1,18 @@
 import typescript from "rollup-plugin-typescript2";
 import { builtinModules } from "module";
-import { dependencies, devDependencies, name, version } from "./package.json";
+import packageJson from "./package.json" assert { type: "json" };
 import glob from "glob";
 import cleanup from "rollup-plugin-cleanup";
 import prettier from "rollup-plugin-prettier";
 
-import prettierConfig from "./.prettierrc.json";
+import prettierConfig from "./.prettierrc.json" assert { type: "json" };
 
 /** @type {import('rollup').RollupOptions} */
 const config = {
   input: [...glob.sync("./src/index.ts")],
   external: [
     ...builtinModules,
-    ...Object.keys({ ...devDependencies, ...dependencies })
+    ...Object.keys({ ...packageJson.devDependencies, ...packageJson.dependencies })
   ],
   output: [
     {
