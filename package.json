@@ -1,0 +1,113 @@
+{
+  "name": "package_template",
+  "version": "1.0.0",
+  "description": "🚀 Package template",
+  "scripts": {
+    "test": "jest",
+    "build:dist": "rimraf dist && rollup -c",
+    "build:docs": "typedoc",
+    "build": "npm run build:dist && npm run build:docs",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run generate-lock-files",
+    "generate-lock-files": "npm i && yarn install",
+    "glf": "npm run generate-lock-files",
+    "lint": "eslint src/*",
+    "prettify": "prettier --write src/**/*"
+  },
+  "private": false,
+  "main": "./index.js",
+  "module": "./index.mjs",
+  "type": "commonjs",
+  "types": "./index.d.ts",
+  "typings": "./index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "require": "./index.js",
+      "import": "./index.mjs",
+      "types": "./index.d.ts"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexXanderGrib/package-template.git"
+  },
+  "keywords": [
+    "logger",
+    "log",
+    "logging",
+    "json",
+    "stream",
+    "http",
+    "pretty",
+    "browser",
+    "nodejs",
+    "node",
+    "typescript",
+    "typed",
+    "frontend",
+    "backend"
+  ],
+  "files": [
+    "dist/",
+    "src/",
+    "coverage/",
+    "examples/",
+    "index.js",
+    "index.mjs",
+    "index.d.ts",
+    "README.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE.txt",
+    "SECURITY.md",
+    "CODE_OF_CONDUCT.md"
+  ],
+  "author": "Alexander Gribochkin <me@alexxgrib.me> (https://alexxgrib.me/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexXanderGrib/package-template/issues"
+  },
+  "homepage": "https://github.com/AlexXanderGrib/package-template#readme",
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "@types/node": "4",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "eslint": "^8.16.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-security": "^1.5.0",
+    "eslint-plugin-unicorn": "^42.0.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.0",
+    "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.75.0",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-prettier": "^2.2.2",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "ts-jest": "^28.0.3",
+    "ts-node": "^10.8.0",
+    "typedoc": "^0.22.15",
+    "typedoc-plugin-markdown": "^3.12.1",
+    "typedoc-plugin-missing-exports": "^0.22.6",
+    "typescript": "^4.6.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run prettify",
+      "pre-push": "npm run build:docs"
+    }
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}
