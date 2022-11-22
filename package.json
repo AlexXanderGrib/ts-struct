@@ -1,6 +1,6 @@
 {
   "name": "ts-struct",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "💻 Typed binary serializer",
   "scripts": {
     "test": "jest",
@@ -37,20 +37,11 @@
     "url": "git+https://github.com/AlexXanderGrib/ts-struct.git"
   },
   "keywords": [
-    "logger",
-    "log",
-    "logging",
-    "json",
-    "stream",
-    "http",
-    "pretty",
-    "browser",
-    "nodejs",
-    "node",
+    "binary",
+    "pack",
+    "packet",
     "typescript",
-    "typed",
-    "frontend",
-    "backend"
+    "typed"
   ],
   "files": [
     "dist/",
